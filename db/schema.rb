@@ -10,9 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_04_23_080445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "date_time"
+    t.string "address"
+    t.integer "duration"
+    t.integer "price"
+    t.bigint "user_id"
+    t.bigint "dog_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dog_id"], name: "index_appointments_on_dog_id"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
+
+  create_table "dogs", force: :cascade do |t|
+    t.string "type"
+    t.string "name"
+    t.string "description"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_dogs_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.boolean "is_walker"
+    t.string "name"
+    t.integer "zip_code"
+    t.string "phone_number"
+    t.integer "walker_age"
+    t.string "walker_description"
+    t.string "walker_img"
+    t.string "token"
+    t.string "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "appointments", "dogs"
+  add_foreign_key "appointments", "users"
+  add_foreign_key "dogs", "users"
 end
