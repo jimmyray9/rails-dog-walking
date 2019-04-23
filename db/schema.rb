@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_04_23_080445) do
   end
 
   create_table "dogs", force: :cascade do |t|
-    t.string "type"
+    t.string "breed"
     t.string "name"
     t.string "description"
     t.bigint "user_id"
