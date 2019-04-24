@@ -15,22 +15,23 @@ class Api::V1::UsersController < Api::V1::BaseController
       token = RestClient.get("https://api.weixin.qq.com/sns/jscode2session?appid=wx9907b4461ceeeee9&secret=f1df82dee8dfa9232df22129c4747846&js_code=#{params[:code]}&grant_type=authorization_code")
       openid = JSON.parse(token)['openid']
       payload = { token: openid }
+      authen = JWT.encode payload, nil, 'none'
 
       @user = User.new
-      @user.username = openid
+      @user.openid = openid
+      @user.token = authen
       @user.save
 
-      authen = JWT.encode payload, nil, 'none'
       render json: {
-        authen: authen
+        openid: openid
       }
     end
   end
 
-  def decode(token)
-    t = JWT.decode token, nil, false
-    t[0]['token']
-  end
+  # def decode(token)
+  #   t = JWT.decode token, nil, false
+  #   t[0]['token']
+  # end
 
   def index
     @users = User.all
