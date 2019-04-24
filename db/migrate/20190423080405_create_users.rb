@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :walker_description
       t.string :walker_img
       t.string :token
-      t.string :username
+      t.string :openid
 
       t.timestamps
     end

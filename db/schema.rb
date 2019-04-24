@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2019_04_23_080445) do
     t.string "walker_description"
     t.string "walker_img"
     t.string "token"
-    t.string "username"
+    t.string "openid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
