@@ -7,9 +7,7 @@ class Api::V1::AppointmentsController < Api::V1::BaseController
 
   def show
     @user = User.find(params[:user_id])
-    @appointment.user = @user
     @dog = Dog.find(params[:dog_id])
-    @appointment.dog = @dog
     render json: @appointment
   end
 

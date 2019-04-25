@@ -1,14 +1,16 @@
 class Api::V1::DogsController < Api::V1::BaseController
   before_action :set_dog, only: [:show, :update, :destroy]
   def index
+    @user = User.find(params[:user_id])
     @dogs = Dog.all
-    render json: @dogs
+    @dogs.each do |dog|
+      render json: dog if dog.user == @user
+    end
   end
 
   def show
     @user = User.find(params[:user_id])
-    @dog.user = @user
-    render json: @dog
+    render json: @dog if @dog.user == @user
   end
 
   def update
