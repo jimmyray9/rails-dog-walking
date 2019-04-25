@@ -3,9 +3,11 @@ class Api::V1::DogsController < Api::V1::BaseController
   def index
     @user = User.find(params[:user_id])
     @dogs = Dog.all
-    @dogs.each do |dog|
-      render json: dog if dog.user == @user
+    @array = []
+    @dogs.map do |dog|
+      @array << dog if dog.user == @user
     end
+    render json: @array
   end
 
   def show

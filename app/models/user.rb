@@ -1,4 +1,5 @@
 class User < ApplicationRecord
-  has_many :dogs
-  has_many :appointments
+  has_many :dogs, dependent: :destroy
+  has_many :appointments, dependent: :destroy
+  validates :name, uniqueness: true
 end

@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :users do
-        resources :dogs
-        resources :appointments
+        resources :dogs do
+          resources :appointments
+        end
       end
       post "/login", to: "users#login", as: :login
     end
