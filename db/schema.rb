@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_04_23_080445) do
     t.string "address"
     t.integer "duration"
     t.integer "price"
+    t.string "description"
     t.bigint "user_id"
     t.bigint "dog_id"
     t.datetime "created_at", null: false
@@ -46,6 +47,8 @@ ActiveRecord::Schema.define(version: 2019_04_23_080445) do
     t.integer "walker_age"
     t.string "walker_description"
     t.string "walker_img"
+    t.integer "walker_rating"
+    t.string "walker_price"
     t.string "token"
     t.string "openid"
     t.datetime "created_at", null: false

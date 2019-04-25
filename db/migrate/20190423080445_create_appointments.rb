@@ -5,6 +5,7 @@ class CreateAppointments < ActiveRecord::Migration[5.2]
       t.string :address
       t.integer :duration
       t.integer :price
+      t.string :description
       t.references :user, foreign_key: true
       t.references :dog, foreign_key: true
 

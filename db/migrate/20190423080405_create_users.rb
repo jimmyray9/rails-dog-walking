@@ -8,6 +8,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer :walker_age
       t.string :walker_description
       t.string :walker_img
+      t.integer :walker_rating
+      t.string :walker_price
       t.string :token
       t.string :openid
 
