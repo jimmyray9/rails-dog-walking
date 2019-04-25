@@ -1,16 +1,18 @@
 class Api::V1::AppointmentsController < Api::V1::BaseController
   before_action :set_appointment, only: [:show, :update, :destroy]
   def index
+    @user = User.find(params[:user_id])
+    @dog = Dog.find(params[:dog_id])
     @appointments = Appointment.all
-    render json: @appointments
+    @appointments.each do |appointment|
+      render json: appointment if appointment.user == @user && appointment.dog == @dog
+    end
   end
 
   def show
     @user = User.find(params[:user_id])
-    @appointment.user = @user
     @dog = Dog.find(params[:dog_id])
-    @appointment.dog = @dog
-    render json: @appointment
+    render json: @appointment if @appointment.user == @user && appointment.dog == @dog
   end
 
   def update
