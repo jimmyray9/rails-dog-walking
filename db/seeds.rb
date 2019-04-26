@@ -12,8 +12,10 @@
         is_walker: true,
         walker_age: rand(19..35),
         walker_description: Faker::Movie.quote,
-        zip_code: [610000, 610012, 610013, 610043, 610036].sample,
-        walker_img: Faker::Internet.url
+        walker_img: Faker::Internet.url,
+        walker_rating: rand(1..5),
+        walker_price: rand(10..100),
+        zip_code: [610000, 610012, 610013, 610043, 610036].sample
     })
     user.save
 end
@@ -27,3 +29,5 @@ end
     })
     user.save
 end
+
+
