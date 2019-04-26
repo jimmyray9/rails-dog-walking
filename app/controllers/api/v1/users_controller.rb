@@ -16,7 +16,6 @@ class Api::V1::UsersController < Api::V1::BaseController
       openid = JSON.parse(token)['openid']
       payload = { token: openid }
       authen = JWT.encode payload, nil, 'none'
-
       @user = User.new
       @user.openid = openid
       @user.token = authen
